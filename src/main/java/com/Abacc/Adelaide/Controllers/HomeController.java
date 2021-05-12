@@ -44,4 +44,9 @@ public class HomeController {
 	{
 		return "contact";
 	}
+	@GetMapping("/memberlogin")
+	public String goMemberLogin()
+	{
+		return "memberlogin";
+	}
 }
