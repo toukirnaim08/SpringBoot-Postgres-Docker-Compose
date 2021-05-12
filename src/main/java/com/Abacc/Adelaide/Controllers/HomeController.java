@@ -33,15 +33,20 @@ public class HomeController {
 		return "members";
 	}
 
-	@GetMapping("/registration")
-	public String goRegistration()
-	{
-		return "registration";
-	}
+//	@GetMapping("/registration")
+//	public String goRegistration()
+//	{
+//		return "registration";
+//	}
 
 	@GetMapping("/contact")
 	public String goContact()
 	{
 		return "contact";
+	}
+	@GetMapping("/memberlogin")
+	public String goMemberLogin()
+	{
+		return "memberlogin";
 	}
 }
