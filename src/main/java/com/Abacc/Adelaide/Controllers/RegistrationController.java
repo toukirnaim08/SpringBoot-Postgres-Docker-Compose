@@ -4,7 +4,7 @@ package com.Abacc.Adelaide.Controllers;
 import com.Abacc.Adelaide.Dto.RegistrationDto;
 import com.Abacc.Adelaide.Models.User;
 import com.Abacc.Adelaide.Repositories.RegistrationRepository;
-import com.Abacc.Adelaide.Services.RegisterService;
+//import com.Abacc.Adelaide.Services.RegisterService;
 import com.Abacc.Adelaide.Services.UserRegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
