@@ -40,6 +40,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		auth.authenticationProvider(authenticationProvider());
 	}
 
+//	@Override
+//	protected void configure(HttpSecurity http) throws Exception {
+//		http.authorizeRequests().antMatchers(
+//				"/registration**",
+//				"/contact**",
+//				"/index**",
+//				"/css/**",
+//				"/images/**",
+//				"/js/**",
+//				"/scss/**"
+//		)..anonymous().and().formLogin().loginPage("/memberlogin")
+//				.permitAll().and()
+//				.logout().invalidateHttpSession(true).clearAuthentication(true)
+//				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//				.logoutSuccessUrl("/memberlogin?logout").permitAll();
+//	}
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers(
@@ -50,11 +67,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				"/images/**",
 				"/js/**",
 				"/scss/**"
-		).anonymous().and().formLogin().loginPage("/memberlogin")
+		).permitAll().anyRequest().authenticated().and().formLogin().loginPage("/memberlogin")
 				.permitAll().and()
 				.logout().invalidateHttpSession(true).clearAuthentication(true)
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 				.logoutSuccessUrl("/memberlogin?logout").permitAll();
 	}
+
 
 }

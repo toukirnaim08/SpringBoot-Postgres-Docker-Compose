@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 	<title>ABACC - Adelaide Bangladeshi Association Cultural Club</title>
 	<meta charset="utf-8">
@@ -35,6 +36,7 @@
 						<div class="col-md-6 d-flex justify-content-md-end">
 							<div class="social-media">
 								<p class="mb-0 d-flex">
+									<a sec:authorize="isAuthenticated()" class="d-flex align-items-center justify-content-center" th:href="@{/logout}">Logout</a>
 									<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
 									<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
 									<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
@@ -78,10 +80,10 @@
 					<div class="dropdown-menu">
 						<a href="#" class="dropdown-item">Executive Members</a>
 						<div class="dropdown-divider"></div>
-						<a href="memberlogin"class="dropdown-item">Login</a>
+						<a sec:authorize="isAnonymous()" href="memberlogin"class="dropdown-item">Login</a>
 					</div>
 				</li>
-				<li class="nav-item"><a href="registration" class="nav-link">Registration</a></li>
+				<li class="nav-item" sec:authorize="isAnonymous()"><a href="registration" class="nav-link">Registration</a></li>
 				<li class="nav-item"><a href="contact" class="nav-link">Contact</a></li>
 			</ul>
 		</div>
