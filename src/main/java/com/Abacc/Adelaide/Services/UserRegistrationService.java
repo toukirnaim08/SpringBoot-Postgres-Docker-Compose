@@ -6,4 +6,5 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface UserRegistrationService extends UserDetailsService {
 	User save(RegistrationDto registrationDto);
+	User adminSave(RegistrationDto registrationDto);
 }

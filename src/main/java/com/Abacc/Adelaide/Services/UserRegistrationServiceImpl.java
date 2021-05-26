@@ -40,6 +40,16 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 	}
 
 	@Override
+	public User adminSave(RegistrationDto registrationDto) {
+		User user = new User(registrationDto.getUsername(), registrationDto.getFirstname(), registrationDto.getLastname(),
+				registrationDto.getEmail(), passwordEncoder.encode(registrationDto.getPassword()),
+				passwordEncoder.encode(registrationDto.getConfirmpassword()),
+				registrationDto.getSuburb(), Arrays.asList(new Role("ROLE_Admin")));
+
+		return registrationRepository.save(user);
+	}
+
+	@Override
 	public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
 		User user = registrationRepository.findByEmail(s);

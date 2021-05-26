@@ -49,4 +49,9 @@ public class HomeController {
 	{
 		return "memberlogin";
 	}
+	@GetMapping("/admin")
+	public String goAdmin()
+	{
+		return "admin";
+	}
 }

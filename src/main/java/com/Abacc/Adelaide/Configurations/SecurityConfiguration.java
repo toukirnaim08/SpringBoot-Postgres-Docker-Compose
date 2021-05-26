@@ -57,17 +57,40 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //				.logoutSuccessUrl("/memberlogin?logout").permitAll();
 //	}
 
-	@Override
+	/*@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers(
 				"/registration**",
+				"/adminreg**",
 				"/contact**",
 				"/index**",
 				"/css/**",
 				"/images/**",
 				"/js/**",
 				"/scss/**"
-		).permitAll().anyRequest().authenticated().and().formLogin().loginPage("/memberlogin")
+		).permitAll().anyRequest().authenticated().
+				and().formLogin().loginPage("/memberlogin")
+				.permitAll().and()
+				.logout().invalidateHttpSession(true).clearAuthentication(true)
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+				.logoutSuccessUrl("/memberlogin?logout").permitAll();
+	}*/
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests()
+				.antMatchers("/admin**").hasAuthority("ROLE_Admin")
+				.antMatchers(
+				"/registration**",
+				"/adminreg**",
+				"/contact**",
+				"/index**",
+				"/css/**",
+				"/images/**",
+				"/js/**",
+				"/scss/**"
+		).permitAll().anyRequest().authenticated().
+				and().formLogin().loginPage("/memberlogin")
 				.permitAll().and()
 				.logout().invalidateHttpSession(true).clearAuthentication(true)
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
