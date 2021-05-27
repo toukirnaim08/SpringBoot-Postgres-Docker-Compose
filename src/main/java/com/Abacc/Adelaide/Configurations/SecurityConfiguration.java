@@ -82,7 +82,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/admin**").hasAuthority("ROLE_Admin")
 				.antMatchers(
 				"/registration**",
-				"/adminreg**",
+				"/regadmin",
+				"/about**",
 				"/contact**",
 				"/index**",
 				"/css/**",

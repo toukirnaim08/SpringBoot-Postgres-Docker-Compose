@@ -1,0 +1,191 @@
+<!doctype html>
+<!--
+* Bootstrap Simple Admin Template
+* Version: 2.1
+* Author: Alexis Luna
+* Website: https://github.com/alexis-luna/bootstrap-simple-admin-template
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Forms | Bootstrap Simple Admin Template</title>
+	<link href="assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+	<link href="assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
+	<link href="assets/vendor/fontawesome/css/brands.min.css" rel="stylesheet">
+	<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/css/master.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="wrapper">
+	<nav id="sidebar" class="active">
+		<div class="sidebar-header">
+			<img src="assets/img/bootstraper-logo.png" alt="bootraper logo" class="app-logo">
+		</div>
+		<ul class="list-unstyled components text-secondary">
+			<li>
+				<a href="admin"><i class="fas fa-home"></i> Dashboard</a>
+			</li>
+			<li>
+				<a href="newevents"><i class="fas fa-file-alt"></i> Create New Event</a>
+			</li>
+			<li>
+				<a href="tables.html"><i class="fas fa-table"></i> Events Table</a>
+			</li>
+			<li>
+				<a href="charts.html"><i class="fas fa-chart-bar"></i> Charts</a>
+			</li>
+			<li>
+				<a href="icons.html"><i class="fas fa-icons"></i> Icons</a>
+			</li>
+			<li>
+				<a href="#uielementsmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle no-caret-down"><i class="fas fa-layer-group"></i> UI Elements</a>
+				<ul class="collapse list-unstyled" id="uielementsmenu">
+					<li>
+						<a href="ui-buttons.html"><i class="fas fa-angle-right"></i> Buttons</a>
+					</li>
+					<li>
+						<a href="ui-badges.html"><i class="fas fa-angle-right"></i> Badges</a>
+					</li>
+					<li>
+						<a href="ui-cards.html"><i class="fas fa-angle-right"></i> Cards</a>
+					</li>
+					<li>
+						<a href="ui-alerts.html"><i class="fas fa-angle-right"></i> Alerts</a>
+					</li>
+					<li>
+						<a href="ui-tabs.html"><i class="fas fa-angle-right"></i> Tabs</a>
+					</li>
+					<li>
+						<a href="ui-date-time-picker.html"><i class="fas fa-angle-right"></i> Date & Time Picker</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#authmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle no-caret-down"><i class="fas fa-user-shield"></i> Authentication</a>
+				<ul class="collapse list-unstyled" id="authmenu">
+					<li>
+						<a href="login.html"><i class="fas fa-lock"></i> Login</a>
+					</li>
+					<li>
+						<a href="signup.html"><i class="fas fa-user-plus"></i> Signup</a>
+					</li>
+					<li>
+						<a href="forgot-password.html"><i class="fas fa-user-lock"></i> Forgot password</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#pagesmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle no-caret-down"><i class="fas fa-copy"></i> Pages</a>
+				<ul class="collapse list-unstyled" id="pagesmenu">
+					<li>
+						<a href="blank.html"><i class="fas fa-file"></i> Blank page</a>
+					</li>
+					<li>
+						<a href="404.html"><i class="fas fa-info-circle"></i> 404 Error page</a>
+					</li>
+					<li>
+						<a href="500.html"><i class="fas fa-info-circle"></i> 500 Error page</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="users.html"><i class="fas fa-user-friends"></i>Users</a>
+			</li>
+			<li>
+				<a href="settings.html"><i class="fas fa-cog"></i>Settings</a>
+			</li>
+		</ul>
+	</nav>
+	<div id="body" class="active">
+		<nav class="navbar navbar-expand-lg navbar-white bg-white">
+			<button type="button" id="sidebarCollapse" class="btn btn-light"><i class="fas fa-bars"></i><span></span></button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="nav navbar-nav ml-auto">
+					<li class="nav-item dropdown">
+						<div class="nav-dropdown">
+							<a href="" class="nav-item nav-link dropdown-toggle text-secondary" data-toggle="dropdown"><i class="fas fa-user"></i> <span sec:authentication="name">Username</span> <i style="font-size: .8em;" class="fas fa-caret-down"></i></a>
+							<div class="dropdown-menu dropdown-menu-right nav-link-menu">
+								<ul class="nav-list">
+									<li><a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+								</ul>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<div class="content">
+			<div class="container">
+				<div class="page-title">
+					<h3>Forms</h3>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-header">Create New Event</div>
+							<div class="card-body">
+								<h5 class="card-title"></h5>
+								<form class="form-horizontal" th:action="@{/newevents}" method="post" th:object="${event}">
+									<div class="form-group row">
+										<label class="col-sm-2">Title</label>
+										<div class="col-sm-10">
+											<input type="text" placeholder="Put Event Title Here.." name="title" id="title" class="form-control" th:field="*{title}" required>
+										</div>
+									</div>
+
+									<div class="line"></div><br>
+									<div class="form-group row">
+										<label class="col-sm-2">Description</label>
+										<div class="col-sm-10">
+<!--											<input type="text" placeholder="Put Description Here.." class="form-control">-->
+											<textarea class="form-control" placeholder="Put Description Here.." id="description" name="description" rows="3" th:field="*{description}" required></textarea>
+										</div>
+									</div>
+									<div class="line"></div><br>
+									<div class="form-group row">
+										<label class="col-sm-2">Event Date</label>
+										<div class="col-sm-10 " >
+											<input type="date" class="form-control" id="eventDate" name="eventDate" th:field="*{eventDate}" required>
+										</div>
+									</div>
+
+									<div class="line"></div><br>
+									<div class="form-group row">
+										<label class="col-sm-2">Button addons</label>
+										<div class="col-sm-10">
+										<input type="file" accept="image/jpeg" class="form-control-file" id="image" name="image" th:field="*{image}" required>
+										</div>
+									</div>
+									<div class="line"></div><br>
+									<div class="form-group row">
+										<div class="col-sm-4 offset-sm-2">
+											<button type="cancel" class="btn btn-secondary mb-2"><i class="fas fa-times"></i> Cancel</button>
+											<button type="submit" class="btn btn-primary mb-2"><i class="fas fa-save"></i> Save</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/form-validator.js"></script>
+<script src="assets/js/script.js"></script>
+
+
+</body>
+
+</html>

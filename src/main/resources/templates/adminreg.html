@@ -115,7 +115,7 @@
 			<div class="col-md-6 pl-md-5 py-md-5">
 				<!--				<form action="completeregistration" class="form-consultation" method="POST">-->
 
-				<form th:action="@{/adminreg}" class="form-consultation" method="post" th:object="${member}">
+				<form th:action="@{/regadmin}" class="form-consultation" method="post" th:object="${member}">
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="User Name" id="username" th:field="*{username}" required>
 					</div>

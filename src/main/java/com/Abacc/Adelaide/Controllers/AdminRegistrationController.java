@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/adminreg")
-public class AdminRegistration {
+@RequestMapping("/regadmin")
+public class AdminRegistrationController {
 	private UserRegistrationService userRegistrationService;
 
-	public AdminRegistration(UserRegistrationService userRegistrationService) {
+	public AdminRegistrationController(UserRegistrationService userRegistrationService) {
 		this.userRegistrationService = userRegistrationService;
 	}
 
@@ -39,3 +39,4 @@ public class AdminRegistration {
 		return "index";
 	}
 }
+
