@@ -23,7 +23,6 @@ public class EventServiceImpl implements EventService{
 	@Override
 	public Event save(EventDto eventDto) {
 		Event event = new Event(eventDto.getTitle(), eventDto.getDescription(), eventDto.getEventDate(), eventDto.getImage());
-
 		return eventRepository.save(event);
 	}
 
@@ -39,6 +38,12 @@ public class EventServiceImpl implements EventService{
 		Event tempEvent = this.eventRepository.findById(id).
 				orElseThrow(()-> new ResourceNotFoundException("Employee ID Not Found:: " + id));
 		this.eventRepository.delete(tempEvent);
+	}
+
+	@Override
+	public Event update(Event event)
+	{
+		return eventRepository.save(event);
 	}
 
 	@Override

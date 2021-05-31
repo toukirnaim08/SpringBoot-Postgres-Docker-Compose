@@ -123,14 +123,15 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="card">
-							<div class="card-header">Create New Event</div>
+							<div class="card-header">Update Event</div>
 							<div class="card-body">
 								<h5 class="card-title"></h5>
-								<form class="form-horizontal" th:action="@{/newevents}" method="post" th:object="${event}">
+								<form class="form-horizontal" th:action="@{/editevent}" method="post" th:object="${updatedevent}">
+									<input type="text" th:value="${editedEvent.getId()}" placeholder="Put Title Here.." class="form-control" id="id" name="id"  hidden>
 									<div class="form-group row">
 										<label class="col-sm-2">Title</label>
 										<div class="col-sm-10">
-											<input type="text" placeholder="Put Event Title Here.." name="title" id="title" class="form-control" th:field="*{title}" required>
+											<input type="text" th:value="${editedEvent.getTitle()}" placeholder="Put Title Here.." class="form-control" id="title" name="title" required>
 										</div>
 									</div>
 
@@ -139,22 +140,22 @@
 										<label class="col-sm-2">Description</label>
 										<div class="col-sm-10">
 											<!--											<input type="text" placeholder="Put Description Here.." class="form-control">-->
-											<textarea class="form-control" placeholder="Put Description Here.." id="description" name="description" rows="3" th:field="*{description}" required></textarea>
+											<textarea th:text="${editedEvent.getDescription()}" class="form-control" placeholder="Put Description Here.." rows="3" id="description" name="description" required></textarea>
 										</div>
 									</div>
 									<div class="line"></div><br>
 									<div class="form-group row">
 										<label class="col-sm-2">Event Date</label>
 										<div class="col-sm-10 " >
-											<input type="date" class="form-control" id="eventDate" name="eventDate" th:field="*{eventDate}" required>
+											<input type="date" th:value="${#dates.format(editedEvent.getEventDate(), 'yyyy-MM-dd')}" class="form-control" id="eventDate" name="eventDate" required>
 										</div>
 									</div>
 
 									<div class="line"></div><br>
 									<div class="form-group row">
-										<label class="col-sm-2">Button addons</label>
+										<label class="col-sm-2">Image</label>
 										<div class="col-sm-10">
-											<input type="file" accept="image/jpeg" class="form-control-file" id="image" name="image" th:field="*{image}" required>
+											<input type="file" accept="image/jpeg" class="form-control-file" id="image" name="image" required>
 										</div>
 									</div>
 									<div class="line"></div><br>

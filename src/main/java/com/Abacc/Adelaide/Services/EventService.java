@@ -10,6 +10,7 @@ import java.util.List;
 public interface EventService {
 	Event save(EventDto eventDto);
 	void delete(Long id) throws ResourceNotFoundException;
+	Event update(Event event);
 	List<Event> findAll();
 	Event findById(Long id) throws ResourceNotFoundException;
 }
