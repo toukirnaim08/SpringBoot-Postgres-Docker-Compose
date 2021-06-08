@@ -1,6 +1,6 @@
 # Abacc Cultural Club Portal
 
-Online managemnt portal of an organization with admin panel. Feel free to use or modify this project.<br>
+Online management portal of an organization with admin panel. Feel free to use or modify this project.<br>
 Postgres is used for data persistance and Spring Security & JWT are used for handling authentication.<br>
 In addition, botstrap is used for template design<br><br>
 
